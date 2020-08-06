@@ -1,6 +1,7 @@
 package com.sanix.Blog.controller;
 
 
+import com.sanix.Blog.dto.LoginRequest;
 import com.sanix.Blog.dto.RegisterRequest;
 import com.sanix.Blog.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,9 @@ public class AuthController {
     public ResponseEntity signup(@RequestBody RegisterRequest registerRequest){
         authService.signup(registerRequest);
         return new ResponseEntity(HttpStatus.OK);
+    }
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest){
+        return authService.login(loginRequest);
     }
 }
